@@ -4,20 +4,22 @@ import (
 	"fmt"
 )
 
-func Set10(x int) {
-	x = 10
+func UpdateA(x int) {
+	x = 5
 }
 
-func Set11(x *int) {
-	//x = 11 //compile error
-	*x = 11
+func UpdateB(x *int) {
+	//x = 5 //compile error
+	*x = 5
 }
 
 func main() {
 	a := 4
-	Set10(a)
+	UpdateA(a)
 	fmt.Printf("a = %d\n", a)
-	//Set11(a) //runtime error
-	Set11(&a)
-	fmt.Printf("a = %d\n", a)
+
+	b := 4
+	//UpdateB(b) //compile error
+	UpdateB(&b)
+	fmt.Printf("b = %d\n", b)
 }

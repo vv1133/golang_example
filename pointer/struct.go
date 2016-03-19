@@ -4,26 +4,47 @@ import (
 	"fmt"
 )
 
-type Ele struct {
-	interger int
+type Cat struct {
+	age int
 }
 
-func (ele Ele) Setx1(x int) {
-	ele.interger = x
+func (cat Cat) Age() int {
+	return cat.age
 }
 
-func (ele *Ele) Setx2(x int) {
-	ele.interger = x
+func (cat Cat) SetAge(x int) {
+	cat.age = x
+}
+
+type Dog struct {
+	age int
+}
+
+func (dog Dog) Age() int {
+	return dog.age
+}
+
+func (dog *Dog) SetAge(x int) {
+	dog.age = x
 }
 
 func main() {
-	ele := new(Ele)
-	ele.Setx1(2)
-	fmt.Printf("%d\n", ele.interger)
-	(*ele).Setx1(3)
-	fmt.Printf("%d\n", ele.interger)
-	ele.Setx2(4)
-	fmt.Printf("%d\n", ele.interger)
-	(*ele).Setx2(5)
-	fmt.Printf("%d\n", ele.interger)
+	cat := new(Cat)
+	//cat := &Cat{1}
+	//cat := Cat{age:1}
+
+	cat.SetAge(3)
+	fmt.Printf("%d\n", cat.Age())
+
+
+	//dog := new(Dog)
+	dog := &Dog{1}
+	//dog := Dog{age:1}//compile error
+
+	dog.SetAge(5)
+	fmt.Printf("%d\n", dog.Age())
+	fmt.Printf("%d\n", (*dog).Age())
+
+	(*dog).SetAge(6)
+	fmt.Printf("%d\n", dog.Age())
 }

@@ -1,0 +1,2 @@
+go build -gcflags='-cpuprofile=prof'
+go tool pprof profile prof
